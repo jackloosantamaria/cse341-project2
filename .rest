@@ -1,0 +1,59 @@
+###Get all Clients
+GET http://localhost:3000/clients
+
+###Get client by ID
+GET  http://localhost:3000/clients/678ea1949e0037132d192f9c
+
+###create client
+POST  http://localhost:3000/clients HTTP/1.1
+Content-Type: application/json
+
+{
+    "clientName": "Jane Doe",
+    "companyName": "Tech Corp Updated",
+    "address": "456 Elm St",
+    "phone": "987-654-3210",
+    "email": "janedoe@example.com",
+    "fax": "987-654-3211",
+    "taxId": "TAX654321"
+}
+
+
+###Update client
+PUT http://localhost:3000/clients/678ea1949e0037132d192f9c HTTP/1.1
+Content-Type: application/json
+
+{
+    "clientName": "Jane Doe",
+    "companyName": "Tech Corp Updated",
+    "address": "456 Elm St",
+    "phone": "987-654-3210",
+    "email": "janedoe@example.com",
+    "fax": "987-654-3211",
+    "taxId": "TAX654321"
+}
+
+###Delete Client
+DELETE http://localhost:3000/clients/678ea1949e0037132d192f9c HTTP/1.1
+
+
+###Get all invoices
+GET http://localhost:3000/invoices
+
+###Get Invoice by ID
+GET http://localhost:3000/invoices/678ea4bb9e0037132d192f9f
+
+###Create invoice
+POST http://localhost:3000/invoices HTTP/1.1
+Content-Type: application/json
+
+{
+    "clientId": "678ea1cb9e0037132d192f9d", 
+    "invoiceNumber": "INV54321",
+    "amount": 1500.00,
+    "date": "2025-01-20",
+    "status": "Paid"
+}
+
+####Delete invoice
+Delete http://localhost:3000/invoices/678ea4bb9e0037132d192f9f HTTP/1.1
