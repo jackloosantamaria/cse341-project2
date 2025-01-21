@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const invoicesController = require('../controllers/invoices');
+const { validateInvoice } = require('../middleware/validate');
 
-router.post('/', invoicesController.createInvoice);
+router.post('/', validateInvoice, invoicesController.createInvoice);
 
 router.get('/', invoicesController.getAllInvoices);
 

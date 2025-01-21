@@ -2,35 +2,35 @@
 GET http://localhost:3000/clients
 
 ###Get client by ID
-GET  http://localhost:3000/clients/678ea1949e0037132d192f9c
+GET  http://localhost:3000/clients/67901198543c7ec006cbd28f
 
 ###create client
 POST  http://localhost:3000/clients HTTP/1.1
 Content-Type: application/json
 
 {
-    "clientName": "Jane Doe",
+    "clientName": "Jamner Doe ",
     "companyName": "Tech Corp Updated",
     "address": "456 Elm St",
     "phone": "987-654-3210",
-    "email": "janedoe@example.com",
+    "email": "jamnerdoe@example.com",
     "fax": "987-654-3211",
-    "taxId": "TAX654321"
+    "taxId": "98-0654321"
 }
 
 
 ###Update client
-PUT http://localhost:3000/clients/678ea1949e0037132d192f9c HTTP/1.1
+PUT http://localhost:3000/clients/679003670a41731a491c98f0 HTTP/1.1
 Content-Type: application/json
 
 {
-    "clientName": "Jane Doe",
+    "clientName": "Tisha Marie Doe",
     "companyName": "Tech Corp Updated",
     "address": "456 Elm St",
     "phone": "987-654-3210",
-    "email": "janedoe@example.com",
+    "email": "tishadoe@example.com",
     "fax": "987-654-3211",
-    "taxId": "TAX654321"
+    "taxId": "01-654321"
 }
 
 ###Delete Client
@@ -48,8 +48,8 @@ POST http://localhost:3000/invoices HTTP/1.1
 Content-Type: application/json
 
 {
-    "clientId": "678ea1cb9e0037132d192f9d", 
-    "invoiceNumber": "INV54321",
+    "clientId": "67901198543c7ec006cbd28f", 
+    "invoiceNumber": "INV98754321",
     "amount": 1500.00,
     "date": "2025-01-20",
     "status": "Paid"
