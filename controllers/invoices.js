@@ -24,6 +24,30 @@ const createInvoice = async (req, res) => {
     }
 };
 
+//update Invoice
+const updateInvoice = async(req, res) => {
+    //#swagger.tags=['Invoices']
+    try{
+    const invoiceId = new ObjectId(req.params.id);
+    const client = {
+        clientId: new ObjectId(req.body.clientId),
+        invoiceNumber: req.body.invoiceNumber,
+        amount: req.body.amount,
+        date: req.body.date,
+        status: req.body.status
+    }
+    const response = await mongodb.getDatabase().db().collection('invoices').replaceOne({_id: invoiceId}, client);
+    if (response.modifiedCount > 0){
+        res.status(200).send();
+    }else{
+        res.status(404).json(response.error || 'Some error occurred while updating the client.')
+    }
+    } catch (error){
+        console.error(error);
+        res.status(500).json({error: 'Failed to update client.'})
+    }
+};
+
 const getAllInvoices = async (req, res) => {
     //#swagger.tags=['Invoices']
     try {
@@ -73,6 +97,7 @@ const deleteInvoice = async (req, res) => {
 
 module.exports = {
     createInvoice,
+    updateInvoice,
     getAllInvoices,
     getInvoiceById,
     deleteInvoice

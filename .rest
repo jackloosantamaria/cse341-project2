@@ -9,13 +9,13 @@ POST  http://localhost:3000/clients HTTP/1.1
 Content-Type: application/json
 
 {
-    "clientName": "Jamner Doe ",
+    "clientName": "Amy Doe ",
     "companyName": "Tech Corp Updated",
     "address": "456 Elm St",
     "phone": "987-654-3210",
-    "email": "jamnerdoe@example.com",
+    "email": "amydoe@example.com",
     "fax": "987-654-3211",
-    "taxId": "98-0654321"
+    "taxId": "18-0654321"
 }
 
 
@@ -48,9 +48,22 @@ POST http://localhost:3000/invoices HTTP/1.1
 Content-Type: application/json
 
 {
-    "clientId": "67901198543c7ec006cbd28f", 
-    "invoiceNumber": "INV98754321",
-    "amount": 1500.00,
+    "clientId": "6791522794867409c395a3cb", 
+    "invoiceNumber": "INV68754321",
+    "amount": 2500.00,
+    "date": "2025-01-20",
+    "status": "Paid"
+}
+
+
+###Update invoice
+PUT http://localhost:3000/invoices/6791529494867409c395a3cc HTTP/1.1
+Content-Type: application/json
+
+{
+    "clientId": "6791522794867409c395a3cb", 
+    "invoiceNumber": "INV68754321",
+    "amount": 800.00,
     "date": "2025-01-20",
     "status": "Paid"
 }
