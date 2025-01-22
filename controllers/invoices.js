@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 //Create new invoice
 const createInvoice = async (req, res) => {
+    //#swagger.tags=['Invoices']
     try {
     const invoice = {
         clientId: new ObjectId(req.body.clientId),
@@ -24,6 +25,7 @@ const createInvoice = async (req, res) => {
 };
 
 const getAllInvoices = async (req, res) => {
+    //#swagger.tags=['Invoices']
     try {
     const result = await mongodb.getDatabase().db().collection('invoices').find().toArray();
     res.setHeader('Content-Type', 'application/json');
@@ -36,6 +38,7 @@ const getAllInvoices = async (req, res) => {
 
 //get invoice by ID
 const getInvoiceById = async (req, res) => {
+    //#swagger.tags=['Invoices']
     try {
     const invoiceId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('invoices').findOne({_id:invoiceId});
@@ -53,6 +56,7 @@ const getInvoiceById = async (req, res) => {
 
 //delete invoice
 const deleteInvoice = async (req, res) => {
+    //#swagger.tags=['Invoices']
     try {
     const invoiceId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('invoices').deleteOne({_id: invoiceId});

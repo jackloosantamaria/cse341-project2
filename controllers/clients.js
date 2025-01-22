@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 //create clients
 const createClient = async (req, res) => {
+    //#swagger.tags=['Clients'] 
     try {
     const client = {
         clientName: req.body.clientName,
@@ -27,6 +28,7 @@ const createClient = async (req, res) => {
 
 //get all clients
 const getAll = async(req, res) => {
+    //#swagger.tags=['Clients']
     try {
     const result = await mongodb.getDatabase().db().collection('clients').find();
     result.toArray().then((clients) => {
@@ -41,6 +43,7 @@ const getAll = async(req, res) => {
 
 //get specific client by id
 const getSingle = async(req, res) => {
+    //#swagger.tags=['Clients']
     try {
     const clientId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('clients').find({_id: clientId});
@@ -56,6 +59,7 @@ const getSingle = async(req, res) => {
 
 //update client
 const updateClient = async(req, res) => {
+    //#swagger.tags=['Clients']
     try{
     const clientId = new ObjectId(req.params.id);
     const client = {
@@ -80,6 +84,7 @@ const updateClient = async(req, res) => {
 };
 
 const deleteClient = async(req, res) => {
+    //#swagger.tags=['Clients']
     try {
     const clientId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('clients').deleteOne({_id: clientId});
