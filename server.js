@@ -4,7 +4,7 @@ const mongodb = require('./data/database');
 const app = express();
 const passport = require('passport');
 const session = require('express-session');
-const GithubStrategy = require('passport-github2').Strategy;
+const GithubStrategy = require('passport-github').Strategy;
 const cors = require('cors');
 
 const port = process.env.PORT || 3000;
@@ -42,7 +42,11 @@ passport.use(new GithubStrategy({
     callbackURL: process.env.CALLBACK_URL
 },
 function(accessToken, refreshToekn, profile, done){
-    return done(null, profile);
+    const user = {
+        displayName: profile.displayName || profile.username || "Anonymous",
+        id: profile.id
+    };
+    return done(null, user);
 }
 ));
 
@@ -58,6 +62,7 @@ app.get('/', (req, res) => {res.send(req.session.user !== undefined ? `Logged in
 app.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs', session: false}),
 (req, res) =>{
+    console.log(req.user);
     req.session.user = req.user;
     res.redirect('/');
 });
